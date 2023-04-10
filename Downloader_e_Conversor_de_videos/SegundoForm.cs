@@ -21,7 +21,7 @@ namespace Downloader_e_Conversor_de_videos
         private string _Dir, _nomeVideo;
         private bool _checkAudio, _checkVideo;
 
-        public SegundoForm(IEnumerable<IVideoStreamInfo> video, IEnumerable<IAudioStreamInfo> music, string nomeVideo, string canal, string dir, bool checkAudio, bool checkVideo)
+        public SegundoForm(IEnumerable<IVideoStreamInfo> video, IEnumerable<IAudioStreamInfo> music, string nomeVideo, string canal, string dir)
         {
             this._Video = video;
             this._Music = music;
@@ -30,19 +30,13 @@ namespace Downloader_e_Conversor_de_videos
             InitializeComponent();
             _nomeVideo = lblNomeVideo.Text = nomeVideo;
             lblCanal.Text = canal;
-            _checkVideo = checkVideo;
-            _checkAudio = checkAudio;
 
-            foreach (var i in video)
-            {
-                comboBoxVideo.Items.Add($"{i} | {String.Format("{0:00}", i.Size.MegaBytes)} Mbs ");
-            }
             foreach (var j in music)
             {
                 comboBoxAudio.Items.Add($"{j} | {String.Format("{0:00}", j.Size.MegaBytes)} Mbs |{j.Size.Bytes}");
             }
-            comboBoxAudio.Visible = checkAudio;
-            comboBoxVideo.Visible = checkVideo;
+            comboBoxAudio.Visible = true;
+          
         }
 
 
@@ -52,8 +46,7 @@ namespace Downloader_e_Conversor_de_videos
 
 
             var yt = new YoutubeClient();
-            if (_checkAudio)
-            {
+         
                 if (lblDonwloadAudio.Text != "Sucesso!")
                 {
 
@@ -98,37 +91,7 @@ namespace Downloader_e_Conversor_de_videos
 
                     }
                 }
-            }
-            if (_checkVideo)
-            {
-                if (lblDownloadVideo.Text != "Sucesso!")
-                {
-                    if (!string.IsNullOrEmpty((string)comboBoxVideo.SelectedItem))
-                    {
-                        var test = lblDownloadVideo.Text;
-                        lblDownloadVideo.Visible = true;
-                        lblDownloadVideo.Text = "Aguarde ...";
-
-                        string opcao = comboBoxVideo.SelectedItem.ToString();
-                        var index = (opcao.Substring(opcao.IndexOf('(') + 1)).Split('|');
-                        var quality = index[0].Trim();
-                        var conteiner = (index[1].Split(')'))[0].Trim();
-                        var vid = (_Video.Where(m => m.VideoQuality.Label == quality)).First(m => m.Container.Name == conteiner);
-                        string rename = Regex.Replace(_nomeVideo, @"[^0-9a-zA-Z ]+", " ");
-                        await yt.Videos.Streams.DownloadAsync(vid, _Dir + "\\" + rename + $".{conteiner}");
-
-                        lblDownloadVideo.ForeColor = Color.Green;
-                        lblDownloadVideo.Text = "Sucesso!";
-                    }
-                    else
-                    {
-                        lblDownloadVideo.Visible = true;
-                        lblDownloadVideo.ForeColor = Color.Red;
-                        lblDownloadVideo.Text = "Escolha a Resolução";
-
-                    }
-                }
-            }
         }
+        
     }
 }

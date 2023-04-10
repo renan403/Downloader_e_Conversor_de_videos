@@ -30,13 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SegundoForm));
             this.btnBaixar = new System.Windows.Forms.Button();
-            this.comboBoxVideo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblNomeVideo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCanal = new System.Windows.Forms.Label();
             this.comboBoxAudio = new System.Windows.Forms.ComboBox();
-            this.lblDownloadVideo = new System.Windows.Forms.Label();
             this.lblDonwloadAudio = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -50,16 +48,6 @@
             this.btnBaixar.Text = "Baixar";
             this.btnBaixar.UseVisualStyleBackColor = true;
             this.btnBaixar.Click += new System.EventHandler(this.bntBaixar_Click);
-            // 
-            // comboBoxVideo
-            // 
-            this.comboBoxVideo.FormattingEnabled = true;
-            this.comboBoxVideo.Location = new System.Drawing.Point(12, 77);
-            this.comboBoxVideo.Name = "comboBoxVideo";
-            this.comboBoxVideo.Size = new System.Drawing.Size(189, 21);
-            this.comboBoxVideo.TabIndex = 3;
-            this.comboBoxVideo.Text = "Escolha a resolução do video";
-            this.comboBoxVideo.Visible = false;
             // 
             // label2
             // 
@@ -108,21 +96,8 @@
             this.comboBoxAudio.Name = "comboBoxAudio";
             this.comboBoxAudio.Size = new System.Drawing.Size(189, 21);
             this.comboBoxAudio.TabIndex = 8;
-            this.comboBoxAudio.Text = "Escolha a qualidade do audio";
+            this.comboBoxAudio.Text = "Escolha o formato e a qualidade";
             this.comboBoxAudio.Visible = false;
-            // 
-            // lblDownloadVideo
-            // 
-            this.lblDownloadVideo.AutoSize = true;
-            this.lblDownloadVideo.BackColor = System.Drawing.SystemColors.Control;
-            this.lblDownloadVideo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDownloadVideo.ForeColor = System.Drawing.Color.Coral;
-            this.lblDownloadVideo.Location = new System.Drawing.Point(231, 81);
-            this.lblDownloadVideo.Name = "lblDownloadVideo";
-            this.lblDownloadVideo.Size = new System.Drawing.Size(52, 17);
-            this.lblDownloadVideo.TabIndex = 10;
-            this.lblDownloadVideo.Text = "label3";
-            this.lblDownloadVideo.Visible = false;
             // 
             // lblDonwloadAudio
             // 
@@ -143,13 +118,11 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(570, 252);
             this.Controls.Add(this.lblDonwloadAudio);
-            this.Controls.Add(this.lblDownloadVideo);
             this.Controls.Add(this.comboBoxAudio);
             this.Controls.Add(this.lblCanal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblNomeVideo);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBoxVideo);
             this.Controls.Add(this.btnBaixar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SegundoForm";
@@ -162,13 +135,11 @@
 
         #endregion
         private System.Windows.Forms.Button btnBaixar;
-        private System.Windows.Forms.ComboBox comboBoxVideo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblNomeVideo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCanal;
         private System.Windows.Forms.ComboBox comboBoxAudio;
-        private System.Windows.Forms.Label lblDownloadVideo;
         private System.Windows.Forms.Label lblDonwloadAudio;
     }
 }

@@ -13,6 +13,8 @@ namespace Downloader_e_Conversor_de_videos
 {
     public partial class Form1 : Form
     {
+        
+
         string pathVideo, video, pathMusic, musica;
 
         private void BtnConvert_Click(object sender, EventArgs e)
@@ -63,7 +65,9 @@ namespace Downloader_e_Conversor_de_videos
 
                     var dir = fileDialog.SelectedPath + "\\";
                     YouTube youTube = new YouTube();
+                    
                     Video video = youTube.GetVideo(txtYtSelect.Text.Trim());
+                    
                     var nomeVideo = video.FullName.Substring(0, video.FullName.Length - 4);
                     File.WriteAllBytes(dir + nomeVideo, video.GetBytes());
                     var inputFile = new MediaFile { Filename = dir + nomeVideo };
@@ -85,7 +89,13 @@ namespace Downloader_e_Conversor_de_videos
                     File.Delete(inputFile.Filename);
 
                     txtYtSelect.Clear();
+                    var resp = MessageBox.Show("Download finalizado", "Download", MessageBoxButtons.OK);
+                    if (resp == DialogResult.OK)
+                    {
+                        progressBarYT.Visible = false;
+                    }
                 }
+
 
             }
 
@@ -123,6 +133,11 @@ namespace Downloader_e_Conversor_de_videos
                         progressBarBaixar.PerformStep();
                     }
                 }
+                var resp = MessageBox.Show("Download finalizado","Download",MessageBoxButtons.OK);
+                if(resp == DialogResult.OK)
+                {
+                    progressBarBaixar.Visible=false;
+                }
             }
 
 
@@ -135,17 +150,15 @@ namespace Downloader_e_Conversor_de_videos
                 var verificaUrl = txtYtExplode.Text.Trim().Substring(0, "https://www.youtube.com/".Length);
                 if ("https://www.youtube.com/" == verificaUrl)
                 {
-                    if (checkVideo.Checked == true || checkAudio.Checked == true)
-                    {
+                   
                         FolderBrowserDialog folder = new FolderBrowserDialog();
                         if (folder.ShowDialog() == DialogResult.OK)
                         {
                             var dir = folder.SelectedPath + "\\";
-                            await BaixarVideo(txtYtExplode.Text.Trim(), dir, checkAudio.Checked, checkVideo.Checked);
+                            await BaixarVideo(txtYtExplode.Text.Trim(), dir);
                         }
-                    }
-                    else
-                        lblErroOpcao.Visible = true;
+                    
+                    
 
                 }
                 else
@@ -158,19 +171,18 @@ namespace Downloader_e_Conversor_de_videos
             else
                 lblErroTxt.Visible = true;
         }
-        public async Task BaixarVideo(string url, string dir, bool checkMusica, bool checkVid)
+        public async Task BaixarVideo(string url, string dir)
         {
             var youtube = new YoutubeClient();
-
             var streamManifest = await youtube.Videos.Streams.GetManifestAsync(url);
+
             var nomeVideo = await youtube.Videos.GetAsync(url);
             var video = streamManifest.GetVideoStreams();
             var music = streamManifest.GetAudioStreams();
             txtYtExplode.Clear();
-            checkAudio.Checked = false;
-            checkVideo.Checked = false;
+
             
-           SegundoForm segundoForm = new SegundoForm(video, music, nomeVideo.Title, nomeVideo.Author.ChannelTitle, dir, checkMusica, checkVid);
+           SegundoForm segundoForm = new SegundoForm(video, music, nomeVideo.Title, nomeVideo.Author.ChannelTitle, dir);
             segundoForm.ShowDialog();
         }
 
