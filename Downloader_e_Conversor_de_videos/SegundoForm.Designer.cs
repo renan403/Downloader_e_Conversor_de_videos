@@ -36,14 +36,16 @@
             this.lblCanal = new System.Windows.Forms.Label();
             this.comboBoxAudio = new System.Windows.Forms.ComboBox();
             this.lblDonwloadAudio = new System.Windows.Forms.Label();
+            this.PBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.PBox)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBaixar
             // 
             this.btnBaixar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBaixar.Location = new System.Drawing.Point(428, 83);
+            this.btnBaixar.Location = new System.Drawing.Point(263, 304);
             this.btnBaixar.Name = "btnBaixar";
-            this.btnBaixar.Size = new System.Drawing.Size(116, 41);
+            this.btnBaixar.Size = new System.Drawing.Size(136, 28);
             this.btnBaixar.TabIndex = 2;
             this.btnBaixar.Text = "Baixar";
             this.btnBaixar.UseVisualStyleBackColor = true;
@@ -53,7 +55,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Location = new System.Drawing.Point(105, 207);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(130, 20);
             this.label2.TabIndex = 4;
@@ -63,7 +65,7 @@
             // 
             this.lblNomeVideo.AutoSize = true;
             this.lblNomeVideo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomeVideo.Location = new System.Drawing.Point(138, 9);
+            this.lblNomeVideo.Location = new System.Drawing.Point(231, 207);
             this.lblNomeVideo.Name = "lblNomeVideo";
             this.lblNomeVideo.Size = new System.Drawing.Size(51, 20);
             this.lblNomeVideo.TabIndex = 5;
@@ -73,7 +75,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 38);
+            this.label1.Location = new System.Drawing.Point(105, 233);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 20);
             this.label1.TabIndex = 6;
@@ -83,7 +85,7 @@
             // 
             this.lblCanal.AutoSize = true;
             this.lblCanal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCanal.Location = new System.Drawing.Point(68, 38);
+            this.lblCanal.Location = new System.Drawing.Point(161, 233);
             this.lblCanal.Name = "lblCanal";
             this.lblCanal.Size = new System.Drawing.Size(51, 20);
             this.lblCanal.TabIndex = 7;
@@ -92,7 +94,7 @@
             // comboBoxAudio
             // 
             this.comboBoxAudio.FormattingEnabled = true;
-            this.comboBoxAudio.Location = new System.Drawing.Point(12, 103);
+            this.comboBoxAudio.Location = new System.Drawing.Point(236, 277);
             this.comboBoxAudio.Name = "comboBoxAudio";
             this.comboBoxAudio.Size = new System.Drawing.Size(189, 21);
             this.comboBoxAudio.TabIndex = 8;
@@ -104,19 +106,29 @@
             this.lblDonwloadAudio.AutoSize = true;
             this.lblDonwloadAudio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDonwloadAudio.ForeColor = System.Drawing.Color.Coral;
-            this.lblDonwloadAudio.Location = new System.Drawing.Point(231, 107);
+            this.lblDonwloadAudio.Location = new System.Drawing.Point(302, 335);
             this.lblDonwloadAudio.Name = "lblDonwloadAudio";
             this.lblDonwloadAudio.Size = new System.Drawing.Size(52, 17);
             this.lblDonwloadAudio.TabIndex = 11;
             this.lblDonwloadAudio.Text = "label4";
             this.lblDonwloadAudio.Visible = false;
             // 
+            // PBox
+            // 
+            this.PBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PBox.Location = new System.Drawing.Point(109, 12);
+            this.PBox.Name = "PBox";
+            this.PBox.Size = new System.Drawing.Size(432, 192);
+            this.PBox.TabIndex = 12;
+            this.PBox.TabStop = false;
+            // 
             // SegundoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(570, 252);
+            this.ClientSize = new System.Drawing.Size(681, 375);
+            this.Controls.Add(this.PBox);
             this.Controls.Add(this.lblDonwloadAudio);
             this.Controls.Add(this.comboBoxAudio);
             this.Controls.Add(this.lblCanal);
@@ -128,6 +140,7 @@
             this.Name = "SegundoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SegundoForm";
+            ((System.ComponentModel.ISupportInitialize)(this.PBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,5 +154,6 @@
         private System.Windows.Forms.Label lblCanal;
         private System.Windows.Forms.ComboBox comboBoxAudio;
         private System.Windows.Forms.Label lblDonwloadAudio;
+        private System.Windows.Forms.PictureBox PBox;
     }
 }

@@ -3,6 +3,7 @@ using MediaToolkit.Model;
 using NReco.VideoConverter;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoLibrary;
@@ -174,15 +175,17 @@ namespace Downloader_e_Conversor_de_videos
         public async Task BaixarVideo(string url, string dir)
         {
             var youtube = new YoutubeClient();
-            var streamManifest = await youtube.Videos.Streams.GetManifestAsync(url);
+            
 
             var nomeVideo = await youtube.Videos.GetAsync(url);
+          
+             var streamManifest = await youtube.Videos.Streams.GetManifestAsync(url);
             var video = streamManifest.GetVideoStreams();
             var music = streamManifest.GetAudioStreams();
             txtYtExplode.Clear();
 
             
-           SegundoForm segundoForm = new SegundoForm(video, music, nomeVideo.Title, nomeVideo.Author.ChannelTitle, dir);
+           SegundoForm segundoForm = new SegundoForm(video, music, nomeVideo.Title, nomeVideo.Author.ChannelTitle, dir, nomeVideo.Thumbnails);
             segundoForm.ShowDialog();
         }
 
